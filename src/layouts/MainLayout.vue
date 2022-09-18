@@ -32,6 +32,7 @@
       side="right"
       bordered
       :width="350"
+      v-if="user"
     >
       <RightDrawer />
     </q-drawer>
@@ -50,7 +51,12 @@
 import LeftDrawer from "src/components/LeftDrawer.vue";
 import RightDrawer from "src/components/RightDrawer.vue";
 
-import { ref } from "vue";
+import { useUsersStore } from "src/stores/users-store";
+
+import { computed, ref } from "vue";
+
+const usersStore = useUsersStore();
+const user = computed(() => usersStore.user);
 
 const leftDrawerOpen = ref(false);
 const rightDrawerOpen = ref(false);

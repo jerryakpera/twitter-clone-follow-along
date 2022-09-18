@@ -104,7 +104,7 @@ module.exports = configure(function (/* ctx */) {
           textColor: "white",
           position: "bottom-right",
           progress: true,
-          timeout: 10000,
+          timeout: 3500,
           group: false,
           multiLine: true,
           color: "primary",

@@ -12,11 +12,11 @@
         autofocus
         class="text-body1 new-qweet"
       >
-        <template v-slot:before>
+        <!-- <template v-slot:before>
           <q-avatar size="xl">
             <img src="https://cdn.quasar.dev/img/avatar5.jpg" />
           </q-avatar>
-        </template>
+        </template> -->
       </q-input>
     </div>
     <div class="col col-shrink">
@@ -36,6 +36,8 @@
 </template>
 
 <script setup>
+import { auth } from "src/boot/firebase";
+
 import { ref } from "vue";
 
 const emit = defineEmits(["addQweet"]);
@@ -43,9 +45,16 @@ const emit = defineEmits(["addQweet"]);
 const newQweetContent = ref("");
 
 const addNewQweet = () => {
+  const { currentUser } = auth;
+  const { displayName, email } = currentUser;
+
+  const handle = email.split("@")[0];
+
   const qweet = {
     content: newQweetContent.value.trim(),
     date: Date.now(),
+    handle: `@${handle}`,
+    fullname: displayName,
     liked: false,
   };
 
