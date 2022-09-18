@@ -181,7 +181,10 @@ const handleSignInWithEmailAndPassword = async () => {
     await qweetsStore.getQweets();
     router.push("/");
   } catch (err) {
-    console.log({ err });
+    if (process.env.DEV) {
+      console.log({ err });
+    }
+
     $q.notify({
       message: err,
       color: "negative",
@@ -250,8 +253,10 @@ const signInWithGoogle = async () => {
       router.push("/");
     })
     .catch((err) => {
-      console.log("Sign in with Google error");
-      console.log(err);
+      if (process.env.DEV) {
+        console.log("Sign in with Google error");
+        console.log(err);
+      }
     });
 };
 </script>

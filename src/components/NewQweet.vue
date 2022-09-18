@@ -48,6 +48,9 @@ const addNewQweet = () => {
   const { currentUser } = auth;
   const { displayName, email } = currentUser;
 
+  console.log(currentUser);
+  console.log(displayName);
+
   const handle = email.split("@")[0];
 
   const qweet = {

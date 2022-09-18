@@ -30,7 +30,9 @@ const handleFetchUser = async () => {
       }
     });
   } catch (err) {
-    console.log(err);
+    if (process.env.DEV) {
+      console.log(err);
+    }
   }
 };
 

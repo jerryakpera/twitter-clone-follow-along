@@ -52,7 +52,9 @@ export const useQweetsStore = defineStore("qweets", {
       try {
         await addDoc(collection(db, "qweets"), qweet);
       } catch (err) {
-        console.log(err);
+        if (process.env.DEV) {
+          console.log(err);
+        }
       }
     },
 
@@ -60,7 +62,9 @@ export const useQweetsStore = defineStore("qweets", {
       try {
         await deleteDoc(doc(db, "qweets", _id));
       } catch (err) {
-        console.log(err);
+        if (process.env.DEV) {
+          console.log(err);
+        }
       }
     },
 
@@ -70,7 +74,9 @@ export const useQweetsStore = defineStore("qweets", {
       try {
         await updateDoc(qweetRef, update);
       } catch (err) {
-        console.log(err);
+        if (process.env.DEV) {
+          console.log(err);
+        }
       }
     },
 
