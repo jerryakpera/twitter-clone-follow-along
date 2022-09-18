@@ -91,7 +91,7 @@ const getQweets = async () => {
       );
 
       if (change.type === "added") {
-        qweets.value.push(qweetChange);
+        qweets.value.unshift(qweetChange);
       }
 
       if (change.type === "modified") {

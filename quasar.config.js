@@ -11,6 +11,8 @@
 const { configure } = require("quasar/wrappers");
 
 module.exports = configure(function (/* ctx */) {
+  require("dotenv").config();
+
   return {
     // https://v2.quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
@@ -44,7 +46,14 @@ module.exports = configure(function (/* ctx */) {
         node: "node16",
       },
 
-      env: require("dotenv").config().parsed,
+      env: {
+        API_KEY: process.env.API_KEY,
+        AUTH_DOMAIN: process.env.AUTH_DOMAIN,
+        PROJECT_ID: process.env.PROJECT_ID,
+        STORAGE_BUCKET: process.env.STORAGE_BUCKET,
+        MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
+        APP_ID: process.env.APP_ID,
+      },
 
       vueRouterMode: "hash", // available values: 'hash', 'history'
       // vueRouterBase,
